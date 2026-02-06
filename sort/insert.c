@@ -1,5 +1,5 @@
 /*
-插入排序
+插入排序（O（N^2））平均情况，是稳定排序
 */
 #include<stdio.h>
 #define MAX 100
