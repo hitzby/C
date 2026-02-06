@@ -1,3 +1,6 @@
+/*
+≤Â»Î≈≈–Ú
+*/
 #include<stdio.h>
 #define MAX 100
 void insert_sort(int arr[],int n){
