@@ -1,4 +1,4 @@
-/*2026å¹´1æœˆ27æ—¥11:25:44---------------æˆ‘ç»ˆäºææ˜ç™½äº†*/
+/*2026Äê1ÔÂ27ÈÕ11:25:44---------------ÎÒÖÕÓÚ¸ãÃ÷°×ÁË*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,19 +9,19 @@
 
 typedef long long ll;
 
-// éœ€æ±‚åŒºé—´ç»“æ„ä½“
+// ĞèÇóÇø¼ä½á¹¹Ìå
 typedef struct {
-	int l, r;  // å·¦ç«¯ç‚¹å’Œå³ç«¯ç‚¹
+	int l, r;  // ×ó¶ËµãºÍÓÒ¶Ëµã
 } Requirement;
 
-// å•è°ƒé˜Ÿåˆ—ç»“æ„ä½“
+// µ¥µ÷¶ÓÁĞ½á¹¹Ìå
 typedef struct {
-	int *indices;  // å­˜å‚¨ä½ç½®ç´¢å¼•
-	ll *values;    // å­˜å‚¨å¯¹åº”çš„dpå€¼
-	int front, rear;  // é˜Ÿé¦–å’Œé˜Ÿå°¾æŒ‡é’ˆ
+	int *indices;  // ´æ´¢Î»ÖÃË÷Òı
+	ll *values;    // ´æ´¢¶ÔÓ¦µÄdpÖµ
+	int front, rear;  // ¶ÓÊ×ºÍ¶ÓÎ²Ö¸Õë
 } MonotonicQueue;
 
-// åˆå§‹åŒ–é˜Ÿåˆ—
+// ³õÊ¼»¯¶ÓÁĞ
 void init_queue(MonotonicQueue *q, int size) {
 	q->indices = (int *)malloc(size * sizeof(int));
 	q->values = (ll *)malloc(size * sizeof(ll));
@@ -29,9 +29,9 @@ void init_queue(MonotonicQueue *q, int size) {
 	q->rear = 0;
 }
 
-// å‘é˜Ÿåˆ—å°¾éƒ¨æ·»åŠ å…ƒç´ ï¼Œç»´æŠ¤å•è°ƒé€’å¢æ€§
+// Ïò¶ÓÁĞÎ²²¿Ìí¼ÓÔªËØ£¬Î¬»¤µ¥µ÷µİÔöĞÔ
 void push_back(MonotonicQueue *q, int idx, ll val) {
-	// ç»´æŠ¤å•è°ƒé€’å¢æ€§ï¼šå¦‚æœé˜Ÿå°¾çš„å€¼ >= å½“å‰å€¼ï¼Œå¼¹å‡ºé˜Ÿå°¾
+	// Î¬»¤µ¥µ÷µİÔöĞÔ£ºÈç¹û¶ÓÎ²µÄÖµ >= µ±Ç°Öµ£¬µ¯³ö¶ÓÎ²
 	while (q->front < q->rear && q->values[q->rear - 1] >= val) {
 		q->rear--;
 	}
@@ -40,33 +40,33 @@ void push_back(MonotonicQueue *q, int idx, ll val) {
 	q->rear++;
 }
 
-// ä»é˜Ÿé¦–å¼¹å‡ºå…ƒç´ 
+// ´Ó¶ÓÊ×µ¯³öÔªËØ
 void pop_front(MonotonicQueue *q) {
 	q->front++;
 }
 
-// è·å–é˜Ÿé¦–å…ƒç´ çš„ç´¢å¼•
+// »ñÈ¡¶ÓÊ×ÔªËØµÄË÷Òı
 int get_front_index(MonotonicQueue *q) {
 	return q->indices[q->front];
 }
 
-// è·å–é˜Ÿé¦–å…ƒç´ çš„å€¼
+// »ñÈ¡¶ÓÊ×ÔªËØµÄÖµ
 ll get_front_value(MonotonicQueue *q) {
 	return q->values[q->front];
 }
 
-// åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+// ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
 int is_empty(MonotonicQueue *q) {
 	return q->front == q->rear;
 }
 
-// é‡Šæ”¾é˜Ÿåˆ—å†…å­˜
+// ÊÍ·Å¶ÓÁĞÄÚ´æ
 void free_queue(MonotonicQueue *q) {
 	free(q->indices);
 	free(q->values);
 }
 
-// æ¯”è¾ƒå‡½æ•°ï¼šæŒ‰å³ç«¯ç‚¹å‡åºæ’åºï¼Œå³ç«¯ç‚¹ç›¸åŒæ—¶æŒ‰å·¦ç«¯ç‚¹å‡åºæ’åº
+// ±È½Ïº¯Êı£º°´ÓÒ¶ËµãÉıĞòÅÅĞò£¬ÓÒ¶ËµãÏàÍ¬Ê±°´×ó¶ËµãÉıĞòÅÅĞò
 int compare_requirements(const void *a, const void *b) {
 	Requirement *req1 = (Requirement *)a;
 	Requirement *req2 = (Requirement *)b;
@@ -77,93 +77,93 @@ int compare_requirements(const void *a, const void *b) {
 }
 
 int main() {
-	int T;  // æµ‹è¯•ç”¨ä¾‹æ•°é‡
+	int T;  // ²âÊÔÓÃÀıÊıÁ¿
 	scanf("%d", &T);
 	
 	while (T--) {
-		int n;  // ä½ç½®æ•°é‡ï¼ˆ1åˆ°nï¼‰
+		int n;  // Î»ÖÃÊıÁ¿£¨1µ½n£©
 		scanf("%d", &n);
 		
-		// åˆ†é…æˆæœ¬æ•°ç»„ï¼Œç´¢å¼•ä»1åˆ°nï¼Œå¹¶æ·»åŠ è™šæ‹Ÿç»ˆç‚¹n+1
+		// ·ÖÅä³É±¾Êı×é£¬Ë÷Òı´Ó1µ½n£¬²¢Ìí¼ÓĞéÄâÖÕµãn+1
 		ll *cost = (ll *)malloc((n + 2) * sizeof(ll));
 		for (int i = 1; i <= n; i++) {
-			scanf("%lld", &cost[i]);  // è¯»å–æ¯ä¸ªä½ç½®çš„æˆæœ¬
+			scanf("%lld", &cost[i]);  // ¶ÁÈ¡Ã¿¸öÎ»ÖÃµÄ³É±¾
 		}
-		cost[n + 1] = 0;  // è™šæ‹Ÿç»ˆç‚¹ï¼Œæˆæœ¬ä¸º0
+		cost[n + 1] = 0;  // ĞéÄâÖÕµã£¬³É±¾Îª0
 		
-		int m;  // éœ€æ±‚åŒºé—´æ•°é‡
+		int m;  // ĞèÇóÇø¼äÊıÁ¿
 		scanf("%d", &m);
 		
-		// åˆ†é…éœ€æ±‚æ•°ç»„
+		// ·ÖÅäĞèÇóÊı×é
 		Requirement *reqs = (Requirement *)malloc((m + 1) * sizeof(Requirement));
 		for (int i = 0; i < m; i++) {
-			scanf("%d %d", &reqs[i].l, &reqs[i].r);  // è¯»å–éœ€æ±‚åŒºé—´
+			scanf("%d %d", &reqs[i].l, &reqs[i].r);  // ¶ÁÈ¡ĞèÇóÇø¼ä
 		}
 		
-		// æŒ‰å³ç«¯ç‚¹æ’åºéœ€æ±‚åŒºé—´
+		// °´ÓÒ¶ËµãÅÅĞòĞèÇóÇø¼ä
 		qsort(reqs, m, sizeof(Requirement), compare_requirements);
 		
-		/* åŠ¨æ€è§„åˆ’ï¼š
-		* dp[i] è¡¨ç¤ºåœ¨ä½ç½® i æ”¾ä¸€ä¸ªç‚¹ï¼Œå¹¶ä¸”æ‰€æœ‰å³ç«¯ç‚¹ < i çš„éœ€æ±‚éƒ½å·²è¢«è¦†ç›–çš„æœ€å°æ€»æˆæœ¬
-		* æœ€ç»ˆç­”æ¡ˆæ˜¯ dp[n+1]ï¼Œå› ä¸º n+1 æ˜¯è™šæ‹Ÿç»ˆç‚¹
+		/* ¶¯Ì¬¹æ»®£º
+		* dp[i] ±íÊ¾ÔÚÎ»ÖÃ i ·ÅÒ»¸öµã£¬²¢ÇÒËùÓĞÓÒ¶Ëµã < i µÄĞèÇó¶¼ÒÑ±»¸²¸ÇµÄ×îĞ¡×Ü³É±¾
+		* ×îÖÕ´ğ°¸ÊÇ dp[n+1]£¬ÒòÎª n+1 ÊÇĞéÄâÖÕµã
 		*/
 		ll *dp = (ll *)malloc((n + 2) * sizeof(ll));
 		for (int i = 0; i <= n + 1; i++) {
-			dp[i] = LLONG_MAX;  // åˆå§‹åŒ–ä¸ºæ— ç©·å¤§
+			dp[i] = LLONG_MAX;  // ³õÊ¼»¯ÎªÎŞÇî´ó
 		}
-		dp[0] = 0;  // è™šæ‹Ÿèµ·ç‚¹ï¼Œä½ç½®0ï¼Œæˆæœ¬0
+		dp[0] = 0;  // ĞéÄâÆğµã£¬Î»ÖÃ0£¬³É±¾0
 		
-		// åˆå§‹åŒ–å•è°ƒé˜Ÿåˆ—
+		// ³õÊ¼»¯µ¥µ÷¶ÓÁĞ
 		MonotonicQueue mq;
 		init_queue(&mq, n + 2);
-		push_back(&mq, 0, dp[0]);  // å°†èµ·å§‹çŠ¶æ€åŠ å…¥é˜Ÿåˆ—
+		push_back(&mq, 0, dp[0]);  // ½«ÆğÊ¼×´Ì¬¼ÓÈë¶ÓÁĞ
 		
-		// req_index: å½“å‰æ­£åœ¨å¤„ç†çš„éœ€æ±‚ç´¢å¼•
-		// last_required: å½“å‰å¿…é¡»è¦†ç›–çš„æœ€å·¦ä½ç½®
+		// req_index: µ±Ç°ÕıÔÚ´¦ÀíµÄĞèÇóË÷Òı
+		// last_required: µ±Ç°±ØĞë¸²¸ÇµÄ×î×óÎ»ÖÃ
 		int req_index = 0;
 		int last_required = 0;
 		
-		// åŠ¨æ€è§„åˆ’ä¸»å¾ªç¯ï¼šå¤„ç†æ¯ä¸ªä½ç½® i
+		// ¶¯Ì¬¹æ»®Ö÷Ñ­»·£º´¦ÀíÃ¿¸öÎ»ÖÃ i
 		for (int i = 1; i <= n + 1; i++) {
-			/* æ­¥éª¤1: æ›´æ–°å¿…é¡»è¦†ç›–çš„å·¦è¾¹ç•Œ
-			* å¤„ç†æ‰€æœ‰å³ç«¯ç‚¹ < i çš„éœ€æ±‚ï¼Œæ›´æ–° last_required
-			* last_required æ˜¯æ‰€æœ‰å³ç«¯ç‚¹ < i çš„éœ€æ±‚çš„å·¦ç«¯ç‚¹çš„æœ€å¤§å€¼
-			* è¿™æ„å‘³ç€ï¼šå‰ä¸€ä¸ªç‚¹å¿…é¡» â‰¥ last_required
+			/* ²½Öè1: ¸üĞÂ±ØĞë¸²¸ÇµÄ×ó±ß½ç
+			* ´¦ÀíËùÓĞÓÒ¶Ëµã < i µÄĞèÇó£¬¸üĞÂ last_required
+			* last_required ÊÇËùÓĞÓÒ¶Ëµã < i µÄĞèÇóµÄ×ó¶ËµãµÄ×î´óÖµ
+			* ÕâÒâÎ¶×Å£ºÇ°Ò»¸öµã±ØĞë ¡İ last_required
 			*/
 			while (req_index < m && reqs[req_index].r < i) {
 				last_required = max(last_required, reqs[req_index].l);
 				req_index++;
 			}
 			
-			/* æ­¥éª¤2: æ¸…ç†é˜Ÿåˆ—ä¸­çš„è¿‡æœŸçŠ¶æ€
-			* é˜Ÿåˆ—ä¸­å­˜å‚¨çš„æ˜¯å¯èƒ½ä½œä¸ºå‰é©±çŠ¶æ€çš„ä½ç½® j
-			* ç”±äºå‰ä¸€ä¸ªç‚¹å¿…é¡» â‰¥ last_requiredï¼Œæ‰€ä»¥ç§»é™¤æ‰€æœ‰ç´¢å¼• < last_required çš„çŠ¶æ€
+			/* ²½Öè2: ÇåÀí¶ÓÁĞÖĞµÄ¹ıÆÚ×´Ì¬
+			* ¶ÓÁĞÖĞ´æ´¢µÄÊÇ¿ÉÄÜ×÷ÎªÇ°Çı×´Ì¬µÄÎ»ÖÃ j
+			* ÓÉÓÚÇ°Ò»¸öµã±ØĞë ¡İ last_required£¬ËùÒÔÒÆ³ıËùÓĞË÷Òı < last_required µÄ×´Ì¬
 			*/
 			while (!is_empty(&mq) && get_front_index(&mq) < last_required) {
 				pop_front(&mq);
 			}
 			
-			/* æ­¥éª¤3: çŠ¶æ€è½¬ç§»
-			* å¦‚æœé˜Ÿåˆ—éç©ºï¼Œé˜Ÿé¦–å°±æ˜¯æœ€å°çš„ dp[j]
-			* dp[i] = min{dp[j]} + cost[i]ï¼Œå…¶ä¸­ j æ˜¯é˜Ÿåˆ—ä¸­çš„ä½ç½®
+			/* ²½Öè3: ×´Ì¬×ªÒÆ
+			* Èç¹û¶ÓÁĞ·Ç¿Õ£¬¶ÓÊ×¾ÍÊÇ×îĞ¡µÄ dp[j]
+			* dp[i] = min{dp[j]} + cost[i]£¬ÆäÖĞ j ÊÇ¶ÓÁĞÖĞµÄÎ»ÖÃ
 			*/
 			if (!is_empty(&mq)) {
 				dp[i] = get_front_value(&mq) + cost[i];
 			}
 			
-			/* æ­¥éª¤4: å°†å½“å‰çŠ¶æ€åŠ å…¥é˜Ÿåˆ—ï¼Œä¾›åé¢çš„ä½ç½®ä½¿ç”¨
-			* å¦‚æœ dp[i] æœ‰æ•ˆï¼ˆä¸æ˜¯æ— ç©·å¤§ï¼‰ï¼Œå°†å…¶åŠ å…¥é˜Ÿåˆ—
-			* åŠ å…¥æ—¶ç»´æŠ¤é˜Ÿåˆ—çš„å•è°ƒé€’å¢æ€§
+			/* ²½Öè4: ½«µ±Ç°×´Ì¬¼ÓÈë¶ÓÁĞ£¬¹©ºóÃæµÄÎ»ÖÃÊ¹ÓÃ
+			* Èç¹û dp[i] ÓĞĞ§£¨²»ÊÇÎŞÇî´ó£©£¬½«Æä¼ÓÈë¶ÓÁĞ
+			* ¼ÓÈëÊ±Î¬»¤¶ÓÁĞµÄµ¥µ÷µİÔöĞÔ
 			*/
 			if (dp[i] != LLONG_MAX) {
 				push_back(&mq, i, dp[i]);
 			}
 		}
 		
-		// è¾“å‡ºç»“æœï¼šdp[n+1] å°±æ˜¯è¦†ç›–æ‰€æœ‰éœ€æ±‚çš„æœ€å°æˆæœ¬
+		// Êä³ö½á¹û£ºdp[n+1] ¾ÍÊÇ¸²¸ÇËùÓĞĞèÇóµÄ×îĞ¡³É±¾
 		printf("%lld\n", dp[n + 1]);
 		
-		// é‡Šæ”¾æ‰€æœ‰åˆ†é…çš„å†…å­˜
+		// ÊÍ·ÅËùÓĞ·ÖÅäµÄÄÚ´æ
 		free(cost);
 		free(reqs);
 		free(dp);
